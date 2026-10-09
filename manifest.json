@@ -1,0 +1,14 @@
+{
+  "name": "MiArgentina",
+  "short_name": "MiArgentina",
+  "display": "standalone",
+  "background_color": "#2E2EB8",
+  "theme_color": "#2E2EB8",
+  "icons": [
+    {
+      "src": "icono.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

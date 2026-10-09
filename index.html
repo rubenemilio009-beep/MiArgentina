@@ -39,7 +39,6 @@
     margin: 0 auto;
   }
 
-  /* SPLASH */
   #splash {
     position: absolute;
     inset: 0;
@@ -59,7 +58,6 @@
   }
   .logo span { color: #7FB3E8; }
 
-  /* HEADER */
   .header {
     background: #2E2EB8;
     color: #fff;
@@ -87,7 +85,6 @@
     opacity: 0.95;
   }
 
-  /* CONTENT */
   .content {
     flex: 1;
     overflow-y: auto;
@@ -95,7 +92,6 @@
     padding-bottom: 90px;
   }
 
-  /* CARD TURNO */
   .card {
     background: #fff;
     border-radius: 14px;
@@ -127,7 +123,6 @@
     margin-top: 8px;
   }
 
-  /* TITULO SECCION */
   .section-title {
     font-size: 20px;
     font-weight: 700;
@@ -135,7 +130,6 @@
     margin: 8px 0 16px;
   }
 
-  /* GRID BOTONES */
   .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -168,7 +162,6 @@
   }
   .grid-item.disabled .grid-label { color: #888; }
 
-  /* ÍCONOS SVG */
   .svg-icon {
     width: 32px;
     height: 32px;
@@ -183,7 +176,6 @@
   .doc-icon .svg-icon { width: 26px; height: 26px; }
   .card-icon .svg-icon { width: 28px; height: 28px; }
 
-  /* CARD FERIADO */
   .feriado {
     background: linear-gradient(135deg, #AED4F0, #C9E4F7);
     border-radius: 14px;
@@ -202,7 +194,6 @@
   .feriado-text { font-size: 13px; color: #333; line-height: 1.4; }
   .feriado-text strong { font-size: 16px; display: block; margin: 2px 0; }
 
-  /* NAV INFERIOR */
   .nav {
     position: absolute;
     bottom: 0; left: 0; right: 0;
@@ -236,7 +227,6 @@
     justify-content: center;
   }
 
-  /* PANTALLA DOCUMENTOS */
   .screen {
     position: absolute;
     inset: 0;
@@ -313,7 +303,6 @@
   }
   .doc-arrow { color: #999; font-size: 18px; }
 
-  /* DETALLE LICENCIA */
   .licencia-content {
     flex: 1;
     overflow-y: auto;
@@ -407,7 +396,6 @@
     margin-top: 20px;
   }
 
-  /* MODAL LICENCIA IMAGEN */
   #modalLicencia {
     position: absolute;
     inset: 0;
@@ -456,7 +444,6 @@
   .modal-nav.prev { left: 16px; }
   .modal-nav.next { right: 16px; }
 
-  /* ESCRITORIO: centrar y redondear */
   @media (min-width: 500px) {
     body {
       display: flex;
@@ -470,18 +457,16 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
   }
-</style>
+  </style>
 </head>
 <body>
 
 <div class="phone">
 
-  <!-- SPLASH -->
   <div id="splash">
     <div class="logo">mi<span>Argentina</span></div>
   </div>
 
-  <!-- HOME -->
   <div id="home" class="screen active" style="position:relative; transform:none; display:flex;">
     <div class="header">
       <div class="header-top">
@@ -672,7 +657,6 @@
     </div>
   </div>
 
-  <!-- DOCUMENTOS -->
   <div id="documentos" class="screen">
     <div class="subheader">
       <button class="back-btn" onclick="closeDocumentos()">←</button>
@@ -707,7 +691,6 @@
     </div>
   </div>
 
-  <!-- LICENCIA -->
   <div id="licencia" class="screen">
     <div class="subheader">
       <button class="back-btn" onclick="closeLicencia()">←</button>
@@ -738,4 +721,110 @@
                alt="QR"
                onclick="qrError()">
         </div>
-        <div class="qr-c
+        <div class="qr-caption">Última actualización 08/10/2026 15:23 hs.</div>
+
+        <div class="info-row">
+          <div class="info-col">
+            <div class="info-label">Estado</div>
+            <div class="info-value estado-vigente">Vigente</div>
+          </div>
+          <div class="info-col">
+            <div class="info-label">Vencimiento</div>
+            <div class="info-value">02/07/2027</div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-col">
+            <div class="info-label">Nombre</div>
+            <div class="info-value">Ruben Emilio</div>
+          </div>
+          <div class="info-col">
+            <div class="info-label">Apellido</div>
+            <div class="info-value">Tejerina</div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-col">
+            <div class="info-label">DNI</div>
+            <div class="info-value">33250047</div>
+          </div>
+        </div>
+
+        <button class="btn-ver" onclick="verLicencia()">Ver mi licencia</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalLicencia">
+    <div class="modal-header">
+      <button class="back-btn" onclick="cerrarModal()">←</button>
+      <div class="subheader-title">Licencia Nacional de conducir</div>
+    </div>
+    <div class="modal-body">
+      <button class="modal-nav prev" onclick="cambiarImagen(-1)">‹</button>
+      <img id="imgLicencia" src="" alt="Licencia">
+      <button class="modal-nav next" onclick="cambiarImagen(1)">›</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  setTimeout(() => {
+    document.getElementById('splash').classList.add('hidden');
+  }, 2000);
+
+  function openDocumentos() {
+    document.getElementById('documentos').classList.add('active');
+  }
+  function closeDocumentos() {
+    document.getElementById('documentos').classList.remove('active');
+  }
+  function openLicencia() {
+    document.getElementById('licencia').classList.add('active');
+  }
+  function closeLicencia() {
+    document.getElementById('licencia').classList.remove('active');
+  }
+
+  function qrError() {
+    alert('⚠️ Error: No se pudo cargar el contenido del QR.\n\nEsta es una demo, el código QR no está vinculado a un servicio real.');
+  }
+
+  const imagenesLicencia = [
+    'https://i.imgur.com/CPEnWZH.jpeg',
+    'https://i.imgur.com/GeKkd2M.jpeg'
+  ];
+  let imgActual = 0;
+
+  function verLicencia() {
+    imgActual = 0;
+    actualizarImagen();
+    document.getElementById('modalLicencia').classList.add('active');
+  }
+  function cerrarModal() {
+    document.getElementById('modalLicencia').classList.remove('active');
+  }
+  function cambiarImagen(dir) {
+    imgActual = (imgActual + dir + imagenesLicencia.length) % imagenesLicencia.length;
+    actualizarImagen();
+  }
+  function actualizarImagen() {
+    document.getElementById('imgLicencia').src = imagenesLicencia[imgActual];
+  }
+</script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then((reg) => console.log('✅ Service Worker registrado:', reg.scope))
+        .catch((err) => console.error('❌ Error SW:', err));
+    });
+  }
+</script>
+
+</body>
+</html>
